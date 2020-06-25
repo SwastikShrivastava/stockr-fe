@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Title of the page -->
+  <title>Company Profile</title>
+  <meta name="description" content="Index of Stockr">
+  <meta name="author" content="Swastik Shrivastava">
+  <!-- Any libraries goes here -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+  rel="stylesheet">
+  <link href="styles/lib/animate.css"
+  rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <!-- All custom css goes here -->
+  <link rel="stylesheet" href="styles/custom/company.css">
+</head>
+<body style="background-color: rgba(1,100,100,0.05);">
+  <nav>
+    <div class="nav-wrapper white">
+      <a href="#!" class="brand-logo teal-text"><i class="material-icons nav-logo">eco</i>Stockr</a>
+      <ul class="right hide-on-med-and-down black-text">
+        <li style="width: 434px;">
+          <div class="center row" style="margin-bottom:0;">
+            <div class="col s12 " >
+              <div class="row" id="topbarsearch">
+                <div class="input-field col s6 s12 red-text">
+                  <i class="red-text material-icons prefix">search</i>
+                  <input type="text" placeholder="Start typing company name or symbol" id="autocomplete-input" class="autocomplete red-text" >
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="/dashboard"><i class="material-icons black-text">view_module</i></a></li>
+        <li><a href=""><i class="material-icons black-text">refresh</i></a></li>
+        <li><a href="" class="black-text"><i class="material-icons black-text left">attach_money</i><balance/></a></li>
+        <li><a href="" class="black-text"><i class="material-icons black-text left">account_circle</i>Profile</a></li>
+        <li><a href="#" class=""></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="row">
+    <div class="col s3" style="padding-top:30px">
+      <div class="card-panel white">
+        <div class="center">
+          <img src="" height="100" alt="Company Logo" id="comLogo" class="circle white">
+          <br>
+          <p id="comName">Company Name</p>
+          <p id="comSector">Technology</p>
+        </div>
+        <hr/>
+        <ul>
+          <li>
+            <a class="btn-flat"><i class="material-icons left">date_range</i>IPO: <b><ipo/></b></a>
+          </li>
+          <li>
+            <a class="btn-flat"><i class="material-icons left">settings_input_antenna</i>MC: <b><marcap/></b></a>
+          </li>
+          <li>
+            <a class="btn-flat"><i class="material-icons left">device_hub</i>OS: <b><outstand/></b></a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card white">
+        <div class="card-content black-text center">
+          <span class="card-title black-text">Actions</span>
+          <a class="btn-flat"><i class="material-icons left">insights</i>Current Value: <b><cv/></b></a>
+          <br><br>
+          <a class="waves-effect waves-light btn modal-trigger initSale" href="#buyModal">Buy</a>
+          <br><br>
+          <a class="waves-effect waves-yellow btn btn-bordered blue-text modal-trigger initSale" href="#sellModal">Sell</a>
+        </div>
+      </div>
+    </div>
+    <div class="col s9">
+      <div class="row">
+        <div class="col s12">
+          <div class="card white">
+            <div class="card-content">
+              <canvas id="stocksChart" height="50"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col s8">
+          <div class="card white" style="max-height:410px; overflow-x:hidden">
+            <div class="card-content black-text">
+              <span class="card-title black-text">Latest News Articles</span>
+              <hr><br>
+              <news/>
+            </div>
+          </div>
+        </div>
+        <div class="col s4">
+          <div class="card red-grad">
+            <div class="card-content white-text">
+              <span class="card-title white-text">News Sentiments</span>
+              <canvas id="newSentiChart" height="200"></canvas>
+              <br>
+              <p><i><b><growthOrFall/></b> is expected as per News Sentiments</i></p>
+              <br>
+              <p>News Score: <newsScore/></p>
+              <p>News Score in Sector: 53%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="buyModal" class="modal">
+    <div class="modal-content center">
+      <h4>Buy Stocks</h4><hr/><br>
+      <span class="grey-text">Low: $<lowRate/></span><br>
+      <strong><h5>Price: $<price/></h5></strong>
+      <span class="grey-text">High: $<highRate/></span><br><br><br>
+      <div class="row">
+        <div class="input-field col s4 offset-s4">
+          <input id="quantity" type="text" pattern="\d*" maxlength="2" class="validate">
+          <label for="quantity">Quantity</label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer center">
+      <div class="row">
+        <div class="col s12 center">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn" id="buyStock">BUY</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="sellModal" class="modal">
+    <div class="modal-content center">
+      <h4>Sell Stocks</h4><hr/><br>
+      <span class="grey-text">Low: $<lowRate/></span><br>
+      <strong><h5>Price: $<price/></h5></strong>
+      <span class="grey-text">High: $<highRate/></span><br><br><br>
+      <div class="row">
+        <div class="input-field col s4 offset-s4">
+          <input id="quantitys" type="text" pattern="\d*" maxlength="2" class="validate">
+          <label for="quantitys">Quantity</label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer center">
+      <div class="row">
+        <div class="col s12 center">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn" id="sellStock">SELL</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="pageLoader">
+    <div id="preloader-div">
+      <div class="preloader-wrapper big active">
+        <div class="spinner-layer">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- All libraries goes here -->
+  <script src="scripts/lib/jquery-1.11.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script src="scripts/custom/company.js"></script>
+</body>
+</html>

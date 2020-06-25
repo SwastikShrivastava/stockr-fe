@@ -1,0 +1,73 @@
+/* loader */
+.loader {
+  height: 0;
+  width: 0;
+  padding: 2.5vw;
+  border: 1.6vw solid #ccc;
+  border-right-color: #888;
+  border-radius: 4.2vw;
+  -webkit-animation: rotate 1s infinite linear;
+}
+
+@-webkit-keyframes rotate {
+  /* 100% keyframe for  clockwise.
+  use 0% instead for anticlockwise */
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes blowIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+
+.blowIn {
+  -webkit-animation: blowIn 0.5s cubic-bezier(1, 0, 0, 1);
+}
+/* global custom variables */
+:root {
+  --main-content-font: 'Roboto', sans-serif;
+}
+
+.rounded-btn {
+  border-radius: 50px !important;
+}
+
+nav {
+  box-shadow: 0 0 0 0 !important;
+  -webkit-box-shadow: 0 0 0 0 !important;
+}
+
+body {
+  font-family: var(--main-content-font);
+  overflow: hidden;
+}
+
+.btn-small {
+  height: 24px;
+  width: 24px;
+}
+
+.font-500 {
+  font-weight: 500;
+}
+.font-300 {
+  font-weight: 300;
+}
+
+.nav-logo {
+  font-size: 32px !important;
+}
+
+.loginPanel {
+  display: none
+}

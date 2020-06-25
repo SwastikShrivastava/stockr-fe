@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Title of the page -->
+  <title>Dashboard</title>
+  <meta name="description" content="Index of Stockr">
+  <meta name="author" content="Swastik Shrivastava">
+  <!-- Any libraries goes here -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+  rel="stylesheet">
+  <link href="styles/lib/animate.css"
+  rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <!-- All custom css goes here -->
+  <link rel="stylesheet" href="styles/custom/dashboard.css">
+</head>
+<body style="  background-color: rgba(1,100,100,0.05);">
+  <nav>
+    <div class="nav-wrapper white">
+      <a href="#!" class="brand-logo teal-text"><i class="material-icons nav-logo">eco</i>Stockr</a>
+      <ul class="right hide-on-med-and-down black-text">
+        <li style="width: 434px;">
+          <div class="center row" style="margin-bottom:0;">
+            <div class="col s12 " >
+              <div class="row" id="topbarsearch">
+                <div class="input-field col s6 s12 red-text">
+                  <i class="red-text material-icons prefix">search</i>
+                  <input type="text" placeholder="Start typing company name or symbol" id="autocomplete-input" class="autocomplete red-text" >
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href=""><i class="material-icons black-text">view_module</i></a></li>
+        <li><a href=""><i class="material-icons black-text">refresh</i></a></li>
+        <li><a href="" class="black-text"><i class="material-icons black-text left">attach_money</i><balance/></a></li>
+        <li><a href="" class="black-text"><i class="material-icons black-text left">account_circle</i>Profile</a></li>
+        <li><a href="#" class=""></a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="row">
+    <div class="col s1 center white" style="padding-top: 5vh;padding-bottom: 28vh;">
+      <ul>
+        <li>
+          <a class="btn-flat red-text tooltipped" data-position="right" data-delay="50" data-tooltip="Home"><i class="material-icons left nav-logo">home</i></a>
+        </li><br><br>
+        <li>
+          <a class="btn-flat black-text tooltipped" data-position="right" data-delay="50" data-tooltip="Wishlist"><i class="material-icons left nav-logo">stars</i></a>
+        </li><br><br>
+        <li>
+          <a class="btn-flat black-text tooltipped" data-position="right" data-delay="50" data-tooltip="Transactions"><i class="material-icons left nav-logo">money</i></a>
+        </li><br><br>
+        <li>
+          <a class="btn-flat black-text tooltipped" data-position="right" data-delay="50" data-tooltip="Detailed Analysis"><i class="material-icons left nav-logo">pie_chart</i></a>
+        </li><br><br>
+        <li>
+          <a class="btn-flat black-text tooltipped" data-position="right" data-delay="50" data-tooltip="Add Money"><i class="material-icons left nav-logo">add</i></a>
+        </li><br><br>
+        <li>
+          <a class="btn-flat black-text tooltipped" data-position="right" data-delay="50" data-tooltip="Logout" href="/"><i class="material-icons left nav-logo">exit_to_app</i></a>
+        </li>
+      </ul>
+    </div>
+    <div class="col s11">
+      <div class="row">
+        <div class="col s4">
+          <div class="card teal-grad">
+            <div class="card-content white-text">
+              <span class="card-title">Alphabet Inc.</span>
+              <canvas id="googleChart" height="100"></canvas>
+            </div>
+            <div class="card-action white">
+              <a href="/company?symbol=GOOGL">View in Detail</a>
+            </div>
+          </div>
+        </div>
+        <div class="col s4">
+          <div class="card red-grad">
+            <div class="card-content white-text">
+              <span class="card-title">Facebook</span>
+              <canvas id="fbChart" height="100"></canvas>
+            </div>
+            <div class="card-action white">
+              <a href="/company?symbol=FB">View in Detail</a>
+            </div>
+          </div>
+        </div>
+        <div class="col s4">
+          <div class="card blue-grad">
+            <div class="card-content white-text">
+              <span class="card-title">Apple</span>
+              <canvas id="appleChart" height="100"></canvas>
+            </div>
+            <div class="card-action white">
+              <a href="/company?symbol=AAPL">View in Detail</a>
+            </div>
+          </div>
+        </div>
+        <div class="col s4">
+          <ul class="collection with-header" style="max-height:400px; overflow:scroll">
+            <li class="collection-header"><h6>Stocks Bought</h6></li>
+            <stockBought/>
+          </ul>
+        </div>
+        <div class="col s4">
+          <ul class="collection with-header" style="max-height:400px; overflow:scroll">
+            <li class="collection-header"><h6>Stocks Sold</h6></li>
+            <stockSold/>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="vl"></div>
+  <div id="pageLoader">
+    <div id="preloader-div">
+      <div class="preloader-wrapper big active">
+        <div class="spinner-layer">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- All libraries goes here -->
+  <script src="scripts/lib/jquery-1.11.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script src="scripts/custom/dashboard.js"></script>
+</body>
+</html>
